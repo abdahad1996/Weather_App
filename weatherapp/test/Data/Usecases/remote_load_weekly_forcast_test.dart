@@ -57,6 +57,7 @@ void main() {
     final givenWeeklyForcasts = list;
 
     final expectedWeeklyForcasts = await sut.loadByCoordinates(10, 4);
+    // expect(expectedWeeklyForcasts, givenWeeklyForcasts);
 
     expect(
         expectedWeeklyForcasts[0].date,

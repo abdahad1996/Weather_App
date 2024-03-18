@@ -20,28 +20,41 @@ class RemoteLoadWeeklyForcast implements LoadWeeklyForcast {
       return weeklyForcasts;
     } on APIError catch (error) {
       if (error == APIError.unauthorized) {
-        throw DomainError.invalidCredentials;
+        return throw DomainError.invalidCredentials;
       }
       if (error == APIError.invalidJson) {
-        throw DomainError.invalidData;
+        return throw DomainError.invalidData;
       }
-      throw DomainError.notConnected;
+      return throw DomainError.notConnected;
     }
   }
 
   List<WeeklyForcastEntity> mapper(json) {
-    if (!json.contains(['daily'])) {
-      throw APIError.invalidJson;
+    try {
+      final dailyForcastJson = json['daily'];
+      List<WeeklyForcastEntity> weeklyForcasts = dailyForcastJson
+          .map<WeeklyForcastEntity>(
+              (item) => RemoteWeeklyForcastModel.fromJson(item).toEntity())
+          .toList();
+      if (weeklyForcasts.isEmpty) {
+        return [];
+      } else {
+        return weeklyForcasts;
+      }
+    } catch (error) {
+      return throw DomainError.invalidData;
     }
-    final dailyForcastJson = json['daily'];
-    List<WeeklyForcastEntity> weeklyForcasts = dailyForcastJson
-        .map<WeeklyForcastEntity>(
-            (item) => RemoteWeeklyForcastModel.fromJson(item).toEntity())
-        .toList();
-    if (weeklyForcasts.isEmpty) {
-      return [];
-    } else {
-      return weeklyForcasts;
+  }
+}
+
+extension MapListExtension on List<Map<dynamic, dynamic>> {
+  List<dynamic> getValuesForKey(dynamic key) {
+    List<dynamic> values = [];
+    for (var map in this) {
+      if (map.containsKey(key)) {
+        values.add(map[key]);
+      }
     }
+    return values;
   }
 }

@@ -20,18 +20,11 @@ class OnLoadWeeklyResults extends WeeklyForcastEvent {
 
 class OnDayChanged extends WeeklyForcastEvent {
   final int index;
-
-  const OnDayChanged(this.index);
-
+  const OnDayChanged(
+    this.index,
+  );
   @override
   List<Object> get props => [index];
-}
-
-class OnRetry extends WeeklyForcastEvent {
-  const OnRetry();
-
-  @override
-  List<Object> get props => [];
 }
 
 class OnChangingTemperatureUnit extends WeeklyForcastEvent {

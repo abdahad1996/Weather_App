@@ -19,7 +19,7 @@ class WeeklyForcastEntity extends Equatable {
       required this.wind});
 
   @override
-  List<Object?> get props => throw [
+  List<Object?> get props => [
         date,
         temperature,
         weather,
