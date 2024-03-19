@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (_) =>
-                makeWeeklyForcastBloc()..add(const OnLoadWeeklyResults(19, 29)))
+                makeWeeklyForcastBloc()..add(const OnLoadWeeklyResults(29, 29)))
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
