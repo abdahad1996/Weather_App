@@ -4,8 +4,6 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:weatherapp/Domain/Entities/weekly_forcast_entity.dart';
-import 'package:weatherapp/Main/main.dart';
 import 'package:weatherapp/Presentation/weekly_forcast_bloc.dart';
 import 'package:flutter_test/flutter_test.dart' as flutter_test;
 import 'package:test/test.dart' as test;
@@ -14,7 +12,6 @@ import 'package:weatherapp/Presentation/weekly_forcast_state.dart';
 import 'package:weatherapp/UI/Page/weekly_forcast_page.dart';
 
 import '../Domain/Mocks/weather_factory.dart';
-import '../Domain/Usecases/load_weekly_forcast_spy.dart';
 
 class MockWeeklyForcastBloc
     extends MockBloc<WeeklyForcastEvent, WeeklyForcastState>
@@ -29,7 +26,7 @@ void main() {
     HttpOverrides.global = null;
   });
 
-  Widget _makeTestableWidget(Widget body) {
+  Widget makeTestableWidget(Widget body) {
     return BlocProvider<WeeklyForcastBloc>(
       create: (context) => bloc,
       child: MaterialApp(
@@ -44,7 +41,7 @@ void main() {
       // loadWeeklyForcast.mockLoad(weathers: result);
       when(() => bloc.state).thenReturn(WeeklyForcastEmpty());
 
-      await tester.pumpWidget(_makeTestableWidget(const WeeklyForcastPage()));
+      await tester.pumpWidget(makeTestableWidget(const WeeklyForcastPage()));
 
       // await tester.tap(find.byKey(const Key("plus_button")));
       // debugDumpApp();
@@ -58,7 +55,7 @@ void main() {
     (flutter_test.WidgetTester tester) async {
       when(() => bloc.state).thenReturn(WeeklyForcastLoading());
 
-      await tester.pumpWidget(_makeTestableWidget(const WeeklyForcastPage()));
+      await tester.pumpWidget(makeTestableWidget(const WeeklyForcastPage()));
 
       flutter_test.expect(flutter_test.find.byType(CircularProgressIndicator),
           flutter_test.findsOneWidget);
@@ -71,7 +68,7 @@ void main() {
       when(() => bloc.state)
           .thenReturn(const WeeklyForcastLoadingFailue("connection error"));
 
-      await tester.pumpWidget(_makeTestableWidget(const WeeklyForcastPage()));
+      await tester.pumpWidget(makeTestableWidget(const WeeklyForcastPage()));
 
       flutter_test.expect(flutter_test.find.text("connection error"),
           flutter_test.findsOneWidget);
@@ -86,7 +83,7 @@ void main() {
       when(() => bloc.state)
           .thenReturn(WeeklyForcastStateLoaded(result, 0, true));
 
-      await tester.pumpWidget(_makeTestableWidget(const WeeklyForcastPage()));
+      await tester.pumpWidget(makeTestableWidget(const WeeklyForcastPage()));
       await tester.pump(const Duration(seconds: 5));
 
       // debugDumpApp();

@@ -27,9 +27,10 @@ class WeatherForcastList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SizedBox(
-          height: isPortrait ? 98.0 : double.maxFinite,
-          // width: double.infinity,
+          height: isPortrait ? 98.0 : null,
+          width: double.infinity,
           child: ListView.separated(
+            shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
             scrollDirection: orientation == Orientation.portrait
                 ? Axis.horizontal
@@ -94,11 +95,9 @@ class WeatherForcastItem extends StatelessWidget {
                   height: 36.0,
                   width: 36.0,
                   child: Image(
-                    image: NetworkImage(
-                      makeWeatherIconUrl(
-                        weatherForcast.weather.icon,
-                      ),
-                    ),
+                    image: NetworkImage(makeWeatherIconUrl(
+                      weatherForcast.weather.icon,
+                    )),
                   ),
                 ),
                 Text(
