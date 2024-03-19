@@ -13,6 +13,8 @@ class RemoteTemperatureModel {
       throw APIError.invalidJson;
     }
     return RemoteTemperatureModel(
-        temp: json['day'], tempMax: json['min'], tempMin: json['max']);
+        temp: json['day'].toDouble(),
+        tempMax: json['min'].toDouble(),
+        tempMin: json['max'].toDouble());
   }
 }

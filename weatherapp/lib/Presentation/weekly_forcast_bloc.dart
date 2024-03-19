@@ -28,7 +28,7 @@ class WeeklyForcastBloc extends Bloc<WeeklyForcastEvent, WeeklyForcastState> {
 
       if (event is OnChangingTemperatureUnit) {
         // emit()
-        isCelcius = !isCelcius;
+        isCelcius = event.isCelcius;
         emit(WeeklyForcastStateLoaded(result, currentDay, isCelcius));
       }
 
@@ -45,6 +45,7 @@ class WeeklyForcastBloc extends Bloc<WeeklyForcastEvent, WeeklyForcastState> {
     try {
       result = await loadWeeklyForcast.loadByCoordinates(event.lat, event.long);
       emit(WeeklyForcastStateLoaded(result, 0, isCelcius));
+      return;
     } catch (error) {
       if (error == DomainError.invalidCredentials) {
         emit(const WeeklyForcastLoadingFailue("api key is missing"));

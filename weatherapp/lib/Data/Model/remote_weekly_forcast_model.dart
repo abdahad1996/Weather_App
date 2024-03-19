@@ -35,7 +35,7 @@ class RemoteWeeklyForcastModel {
       //     (weatherJson) => RemoteWeatherModel.fromJson(weatherJson)),
       pressure: json['pressure'],
       humidity: json['humidity'],
-      wind: json['wind_speed'],
+      wind: json['wind_speed'].toDouble(),
     );
   }
 

@@ -22,17 +22,12 @@ void main() {
   group('get', () {
     test('Should call get with correct values', () async {
       await sut.getRequest(url: url);
-      verify(() => client.get(Uri.parse(url), headers: {
-            'content-type': 'application/json',
-            'accept': 'application/json'
-          }));
+      verify(() => client.get(Uri.parse(url)));
 
-      await sut.getRequest(url: url, headers: {'any_header': 'any_value'});
-      verify(() => client.get(Uri.parse(url), headers: {
-            'content-type': 'application/json',
-            'accept': 'application/json',
-            'any_header': 'any_value'
-          }));
+      await sut.getRequest(
+        url: url,
+      );
+      verify(() => client.get(Uri.parse(url)));
     });
 
     test('Should return data if get returns 200', () async {

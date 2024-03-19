@@ -8,15 +8,11 @@ class ApiClientAdapter implements APIClient {
 
   ApiClientAdapter(this.client);
   @override
-  Future<dynamic> getRequest({required String url, Map? headers}) async {
-    final defaultHeaders = headers?.cast<String, String>() ?? {}
-      ..addAll(
-          {'content-type': 'application/json', 'accept': 'application/json'});
+  Future<dynamic> getRequest({required String url}) async {
     var response = Response('', 500);
     Future<Response>? futureResponse;
     try {
-      futureResponse = client.get(Uri.parse(url), headers: defaultHeaders);
-      response = await futureResponse.timeout(const Duration(seconds: 10));
+      response = await client.get(Uri.parse(url));
     } catch (error) {
       throw APIError.serverError;
     }

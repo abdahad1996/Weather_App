@@ -26,10 +26,7 @@ class WeeklyForcastStateLoaded extends WeeklyForcastState {
   );
 
   @override
-  String toString() => 'WeeklyForcastStateLoaded { todos: $result }';
-
-  @override
-  List<Object?> get props => [result];
+  List<Object?> get props => [result, currentDay, isCelcius];
 }
 
 class WeeklyForcastLoadingFailue extends WeeklyForcastState {
