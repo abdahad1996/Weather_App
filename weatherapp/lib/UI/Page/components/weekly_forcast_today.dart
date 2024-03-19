@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 
 import 'package:weatherapp/Domain/Entities/weekly_forcast_entity.dart';
 import 'package:weatherapp/Main/Factories/api/api_url_factory.dart';
-import 'package:weatherapp/UI/Helpers/Extensions.dart';
+import 'package:weatherapp/UI/Helpers/extensions.dart';
 
 class WeeklyForcastTodayWidget extends StatelessWidget {
   final WeeklyForcastEntity weatherForcast;

@@ -33,7 +33,8 @@ class WeeklyForcastPage extends StatelessWidget {
             }
             if (state is WeeklyForcastLoading) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                    key: ValueKey('CircularProgressIndicator')),
               );
             }
             if (state is WeeklyForcastStateLoaded) {
@@ -48,6 +49,13 @@ class WeeklyForcastPage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text("Dortmund",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold)),
+                          ),
                           const Spacer(),
                           TemperatureSwitcher(
                             isCelsius: state.isCelcius,
@@ -59,10 +67,12 @@ class WeeklyForcastPage extends StatelessWidget {
                         ],
                       ),
                       WeeklyForcastTodayWidget(
+                        key: const Key('WeeklyForcastTodayWidget'),
                         weatherForcast: state.result[state.currentDay],
                         isCelcius: state.isCelcius,
                       ),
                       WeatherForcastList(
+                        key: const Key('WeatherForcastList'),
                         weatherForcasts: state.result,
                         selectedIndex: state.currentDay,
                         onItemSelected: ((index) => context

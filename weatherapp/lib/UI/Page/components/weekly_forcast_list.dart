@@ -86,9 +86,7 @@ class WeatherForcastItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  isSelected
-                      ? 'Today'
-                      : DateFormat('EEE').format(weatherForcast.date),
+                  DateFormat('EEE').format(weatherForcast.date),
                   style: const TextStyle(fontSize: 16.0),
                   maxLines: 1,
                 ),

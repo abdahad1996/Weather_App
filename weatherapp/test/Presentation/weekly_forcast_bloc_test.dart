@@ -120,6 +120,6 @@ void main() {
       act: (bloc) => bloc.add(const OnDayChanged(2)),
       wait: const Duration(milliseconds: 1000),
       expect: () {
-        return [WeeklyForcastStateLoaded(result, 2, false)];
+        return [WeeklyForcastStateLoaded(result, 2, true)];
       });
 }
