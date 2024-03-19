@@ -1,11 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 
 import 'package:weatherapp/Domain/Entities/weekly_forcast_entity.dart';
 import 'package:weatherapp/Main/Factories/api/api_url_factory.dart';
-import 'package:weatherapp/UI/Helpers/Extensions.dart';
+import 'package:weatherapp/UI/Helpers/extensions.dart';
 
 class WeatherForcastList extends StatelessWidget {
   final List<WeeklyForcastEntity> weatherForcasts;
@@ -14,30 +13,30 @@ class WeatherForcastList extends StatelessWidget {
   final bool isCelcius;
 
   const WeatherForcastList({
-    Key? key,
+    super.key,
     required this.weatherForcasts,
     required this.selectedIndex,
     required this.onItemSelected,
     required this.isCelcius,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     final orientation = MediaQuery.of(context).orientation;
     final isPortrait = orientation == Orientation.portrait;
-    print("Device orientation:${orientation}");
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SizedBox(
           height: isPortrait ? 98.0 : double.maxFinite,
           // width: double.infinity,
           child: ListView.separated(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             scrollDirection: orientation == Orientation.portrait
                 ? Axis.horizontal
                 : Axis.vertical,
-            separatorBuilder: (context, index) =>
-                isPortrait ? SizedBox(width: 8) : SizedBox(height: 8),
+            separatorBuilder: (context, index) => isPortrait
+                ? const SizedBox(width: 8)
+                : const SizedBox(height: 8),
             itemCount: weatherForcasts.length,
             itemBuilder: (context, index) {
               final weatherForcast = weatherForcasts[index];
@@ -48,7 +47,7 @@ class WeatherForcastList extends StatelessWidget {
                 onTap: () {
                   onItemSelected(index);
                 },
-                isCelcius: this.isCelcius,
+                isCelcius: isCelcius,
               );
             },
           )),

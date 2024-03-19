@@ -10,7 +10,6 @@ class ApiClientAdapter implements APIClient {
   @override
   Future<dynamic> getRequest({required String url}) async {
     var response = Response('', 500);
-    Future<Response>? futureResponse;
     try {
       response = await client.get(Uri.parse(url));
     } catch (error) {
