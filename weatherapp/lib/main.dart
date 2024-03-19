@@ -30,3 +30,21 @@ class EmptyWidget extends StatelessWidget {
     );
   }
 }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return 
+//     MultiBlocProvider(
+//           providers: [
+//             BlocProvider<WeeklyForcastBloc>(
+//               create: (BuildContext context) => WeeklyForcastBloc(RemoteLoadWeeklyForcast(url: "",client: APIClient())),
+//             ),
+           
+//           ],
+//           child: MyApp(),
+//         )
+//   }
+// }

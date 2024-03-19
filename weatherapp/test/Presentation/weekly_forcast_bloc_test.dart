@@ -1,5 +1,4 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 import 'package:weatherapp/Domain/domain_error.dart';
 import 'package:weatherapp/Presentation/weekly_forcast_bloc.dart';
@@ -118,7 +117,7 @@ void main() {
         sut.result = result;
         return sut;
       },
-      act: (bloc) => bloc.add(OnDayChanged(2)),
+      act: (bloc) => bloc.add(const OnDayChanged(2)),
       wait: const Duration(milliseconds: 1000),
       expect: () {
         return [WeeklyForcastStateLoaded(result, 2, false)];
