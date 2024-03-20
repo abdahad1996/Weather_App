@@ -1,5 +1,5 @@
 # Weather_App
-
+[![CI-flutter](https://github.com/abdahad1996/Weather_App/blob/main/.github/workflows/main.yml/badge.svg)](https://github.com/abdahad1996/Weather_App/blob/main/.github/workflows/main.yml)
 ## Requirements
 ### Acceptance criterias
 ✅ It’s done when loading indicator is displayed when fetching the data.
