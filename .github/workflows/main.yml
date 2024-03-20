@@ -14,14 +14,14 @@ jobs:
 
       - uses: futureware-tech/simulator-action@v3
         with:
-          model: 'iPhone 14'
+          model: 'iPhone 15'
 
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
 
       - run: flutter pub get
-      - run: flutter test integration_test
+      - run: flutter test
 # You can use flavors to run test, e.g. flutter test integration_test --dart-define=envFlavor=dev --flavor dev
 # Alternatively, if you're using a custom script to run tests, you can use:
 # - run: ./path/to/your/script.sh
