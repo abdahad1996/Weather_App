@@ -1,5 +1,10 @@
 # Weather_App
-[![CI-flutter](https://github.com/abdahad1996/Weather_App/blob/main/.github/workflows/main.yml/badge.svg)](https://github.com/abdahad1996/Weather_App/blob/main/.github/workflows/main.yml)
+![example workflow](https://github.com/abdahad1996/Weather_App/actions/workflows/main.yml/badge.svg)
+## Coverage
+<img width="278" alt="image" src="https://github.com/abdahad1996/Weather_App/assets/28492677/add5d4b2-2baf-43f4-a537-aeb8da951151">
+
+
+
 ## Requirements
 ### Acceptance criterias
 ✅ It’s done when loading indicator is displayed when fetching the data.
