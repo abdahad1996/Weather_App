@@ -1,5 +1,24 @@
-# Weather_App
+# Weather_App is an app showcasing clean architecture with Tdd approach using the open weather api with github actions as CI(Lat long is hardcoded for Dortmund). 
+
 ![example workflow](https://github.com/abdahad1996/Weather_App/actions/workflows/main.yml/badge.svg)
+
+
+## Installation Guide
+- clone the repo and just pressing the play button should make things work if not please contact me.
+-  make sure you have the following version
+Flutter 3.19.3 • channel stable 
+Tools • Dart 3.3.1 • DevTools 2.31.1
+
+## Screen Recordings
+### Android
+https://github.com/abdahad1996/Weather_App/assets/28492677/cfd6654b-d84b-4372-ad78-529f3a865fbb
+
+### iOS
+https://github.com/abdahad1996/Weather_App/assets/28492677/9b29adcb-788b-40ac-8cd5-1cced235d853
+
+
+
+
 ## Coverage
 <img width="278" alt="image" src="https://github.com/abdahad1996/Weather_App/assets/28492677/add5d4b2-2baf-43f4-a537-aeb8da951151">
 
@@ -39,4 +58,3 @@ current temperature, humidity, pressure, and wind.
 
 ✅ Changing the temperature’s unit (C/F).
 
-an app showcasing clean architecture with Tdd approach using the open weather api with github actions as CI
